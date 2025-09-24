@@ -10,9 +10,24 @@ A simple Android desktop widget that displays the current week number.
 
 ## How to build
 
-This project uses Docker to ensure a consistent build environment.
+This project uses Docker to ensure a consistent build environment. To build the app, run the `build.sh` script from the root of the project:
 
-1.  Make sure you have Docker installed and running.
-2.  Run the setup script: `./setup.sh`
-    -   This script will build the Docker image and then run the Android build inside a container.
-3.  The built APK can be found at `app/build/outputs/apk/debug/app-debug.apk`.
+```bash
+./build.sh
+```
+
+This script will first build a Docker image using the `Dockerfile` in the project root and then run the Gradle build inside a container.
+
+### Docker Permissions
+
+If you encounter permission errors when running `build.sh`, you may need to run it with `sudo`:
+
+```bash
+sudo ./build.sh
+```
+
+Alternatively, you can add your user to the `docker` group to avoid using `sudo`. For more information, please refer to the [Docker documentation](https://docs.docker.com/engine/install/linux-postinstall/).
+
+### Build Output
+
+The final APK will be located at `app/build/outputs/apk/debug/app-debug.apk`.
