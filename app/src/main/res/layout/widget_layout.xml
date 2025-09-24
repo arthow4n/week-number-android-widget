@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#80333333"> <!-- 50% transparent dark gray -->
+    android:background="#80333333"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vecka"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp"/>
 
     <TextView
         android:id="@+id/appwidget_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:text="38"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-</RelativeLayout>
+</LinearLayout>
