@@ -3,6 +3,7 @@ package com.example.weekwidget;
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -77,7 +78,7 @@ public class MainActivity extends Activity {
         prefs.putInt("text_color", textColor);
         prefs.putInt("background_color", backgroundColor);
         prefs.putInt("background_transparency", ((SeekBar) findViewById(R.id.background_transparency_seekbar)).getProgress());
-        prefs.commit();
+        prefs.apply();
 
         updateWidget();
         Toast.makeText(this, "Widget configured", Toast.LENGTH_SHORT).show();
@@ -85,10 +86,10 @@ public class MainActivity extends Activity {
     }
 
     private void updateWidget() {
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
-        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, WeekWidgetProvider.class));
-        if (appWidgetIds.length > 0) {
-            new WeekWidgetProvider().onUpdate(this, appWidgetManager, appWidgetIds);
-        }
+        Intent intent = new Intent(this, WeekWidgetProvider.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        int[] appWidgetIds = AppWidgetManager.getInstance(this).getAppWidgetIds(new ComponentName(this, WeekWidgetProvider.class));
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+        sendBroadcast(intent);
     }
 }
