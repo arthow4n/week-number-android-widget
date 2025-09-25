@@ -34,7 +34,7 @@ public class WeekWidgetProvider extends AppWidgetProvider {
         int backgroundTransparency = prefs.getInt("background_transparency", 50);
 
         LocalDate date = LocalDate.now();
-        WeekFields weekFields = WeekFields.of(new Locale("sv", "SE"));
+        WeekFields weekFields = WeekFields.ISO;
         int weekNumber = date.get(weekFields.weekOfWeekBasedYear());
         views.setTextViewText(R.id.widget_label, widgetText);
         views.setTextViewText(R.id.widget_week_number, String.valueOf(weekNumber));
