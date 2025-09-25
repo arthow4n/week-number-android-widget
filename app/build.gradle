@@ -27,5 +27,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.QuadFlask:colorpicker:0.0.13'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.github.QuadFlask:colorpicker:0.0.15'
 }

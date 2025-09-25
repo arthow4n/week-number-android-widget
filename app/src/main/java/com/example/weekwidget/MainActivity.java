@@ -77,7 +77,7 @@ public class MainActivity extends Activity {
         prefs.putInt("text_color", textColor);
         prefs.putInt("background_color", backgroundColor);
         prefs.putInt("background_transparency", ((SeekBar) findViewById(R.id.background_transparency_seekbar)).getProgress());
-        prefs.apply();
+        prefs.commit();
 
         updateWidget();
         Toast.makeText(this, "Widget configured", Toast.LENGTH_SHORT).show();
